@@ -1,5 +1,5 @@
 // const { ObjectId } = require('mongoose').Types;
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
 //Get all users
@@ -30,7 +30,7 @@ createNewUser(req, res) {
 //update an existing user
 updateUser(req, res) {
     User.findOneAndUpdate(
-        {_id: req.params.applicationID },
+        {_id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
     )
@@ -58,6 +58,10 @@ deleteUser(req, res) {
             res.status(500).json(err);
         });
 },
+
+// Add user friend via POST route
+
+// Remove friend via DELETE route from the users friend list
 
 
 }
