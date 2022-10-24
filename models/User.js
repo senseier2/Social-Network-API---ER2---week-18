@@ -1,17 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-// const validateEmail = (email) => {
-//     const re = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-//     return re.test(email);
-//   };
-
-
-// const friendCount = (friends) => {
-//     let count = friends.length
-//     return count
-// }
-
-
 const userSchema = new Schema(
     {
         username: {
@@ -24,11 +12,10 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            // validate: [validateEmail, "Please fill a valid email address"],
-            // match: [
-            //     /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/,
-            //     "Please fill a valid email address",
-            // ],
+            match: [
+                /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/,
+                "Please fill a valid email address"
+            ],
         },
         thoughts: [
             {

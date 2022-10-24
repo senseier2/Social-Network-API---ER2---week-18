@@ -60,11 +60,36 @@ deleteUser(req, res) {
 },
 
 // Add user friend via POST route
+addFriend(req, res) {
+    User.findOneAndUpdate(
+        { _id: params.userId},
+        { $push: { friend: params.friendId } },
+        { runValidators: true, new: true }
+    )
+    .then((user) =>
+    !user
+        ? res.status(404).json({ message: 'No friends with that ID'})
+        : res.json(user)
+    )
+    .catch(err => res.json(err));
+},
 
 // Remove friend via DELETE route from the users friend list
-
-
+deleteFriend(req, res) {
+    User.findOneAndUpdate(
+        { _id: params.userId },
+        { $pull: { friend: params.friendId }},
+        {runValidators: true, new: true }
+    )
+    .then((user) => {
+    !user
+        ? res.status(404).json({ message: 'No friends with that ID. Try Again!'})
+        : res.json(user)
+    })
+    .catch(err => res.json(err));
 }
+
+};
 
 
 
