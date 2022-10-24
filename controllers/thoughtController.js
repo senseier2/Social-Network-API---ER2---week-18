@@ -56,18 +56,49 @@ updateThought(req, res) {
         });
 },
 
+//delete a thought by its id, remove the thought from its user document.
 deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId})
         then((thought) =>
         !thought    
             ? res.status(404).json({ message: 'No thought with that ID '})
-            : res.json(thought)
+            : User.deleteMany({ _id: { $in: thought.user }})
         )
+        .then(() => res.json({ message: 'Thought has been deleted.'}))
         .catch((err) => {
             console.log(err);
             res.status(500).json(err)
         });
 },
 
-    
+//post a reaction stored with a thought - this affects the reaction array
+createReaction(req, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        { $push: { reactions: req.body } },
+        { runValidators: true, new: true }
+    )
+    .then((thought) => {
+    !thought
+        ? res.status(404).json({ message: 'No thought found with that ID.'})
+        : res.json(thought);
+    })
+    .then(() => res.json({ message: 'The reaction has been created'}))
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err)
+    });
+},
+
+//delete a reaction by its ID from thought
+deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        {$pull: {reactions: {reactionId: params.reactionId } } },
+        { new: true }
+    )
+    .then(thought => res.json(thought))
+    .catch(err => res.json(err));
 }
+    
+};
