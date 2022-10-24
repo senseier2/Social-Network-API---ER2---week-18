@@ -8,6 +8,8 @@ getSingleUser,
 createNewUser,
 updateUser,
 deleteUser,
+addFriend,
+deleteFriend,
 
 } = require('../../controllers/userController');
 
@@ -17,11 +19,16 @@ router.route('/')
     .get(getUsers)
     .post(createNewUser)
 
-router
-    .route('/:userId')
+// /api/users/:userId
+router.route('/:userId')
     .get(getSingleUser)
     .post(updateUser)
     .delete(deleteUser)
+
+// /:userId/friends/:friendId
+router.route('/:userId/friends/:friendId')
+    .post(addFriend)
+    .delete(deleteFriend)
 
 module.exports = router;
 
