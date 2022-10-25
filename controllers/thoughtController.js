@@ -1,7 +1,6 @@
-const { thought, Thought, User } = require('../models');
+const { Thought, User } = require('../models');
 
 module.export = {
-
 //Get all thoughts
 getThoughts(req, res) {
     Thought.find()

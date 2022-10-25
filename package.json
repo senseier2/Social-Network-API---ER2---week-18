@@ -1,27 +1,16 @@
 {
-  "name": "social-network-api---er2---week-18",
+  "name": "social-network-api-er2",
   "version": "1.0.0",
   "description": "API for a social network application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
-    "dev": "nodemon index",
-    "seed": "node util/seed"
+    "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/senseier2/Social-Network-API---ER2---week-18.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/senseier2/Social-Network-API---ER2---week-18/issues"
-  },
-  "homepage": "https://github.com/senseier2/Social-Network-API---ER2---week-18#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
   }
 }
