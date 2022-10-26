@@ -1,4 +1,4 @@
-// const { ObjectId } = require('mongoose').Types;
+const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 module.exports = {
@@ -31,13 +31,13 @@ createNewUser(req, res) {
 //update an existing user
 updateUser(req, res) {
     User.findOneAndUpdate(
-        {_id: req.params.userId },
+        { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
-    )
+        )
         .then((user) =>
-         !user
-            ? res.status(404).json({message: 'No application with this id!'})
+        !user
+            ? res.status(404).json({ message: 'No application with this id!'})
             : res.json(user)
         )
         .catch((err) => {
@@ -63,8 +63,8 @@ deleteUser(req, res) {
 // Add user friend via POST route
 addFriend(req, res) {
     User.findOneAndUpdate(
-        { _id: params.userId},
-        { $push: { friend: params.friendId } },
+        { _id: req.params.userId},
+        { $addToSet: { friends: req.params.friendId } },
         { runValidators: true, new: true }
     )
     .then((user) =>
@@ -79,7 +79,7 @@ addFriend(req, res) {
 deleteFriend(req, res) {
     User.findOneAndUpdate(
         { _id: params.userId },
-        { $pull: { friend: params.friendId }},
+        { $pull: { friends: params.friendId }},
         {runValidators: true, new: true }
     )
     .then((user) => {

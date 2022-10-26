@@ -22,7 +22,7 @@ router.route('/')
 // /api/users/:userId
 router.route('/:userId')
     .get(getSingleUser)
-    .post(updateUser)
+    .put(updateUser)
     .delete(deleteUser)
 
 // /:userId/friends/:friendId
