@@ -11,9 +11,10 @@ getUsers(req, res) {
 
 //get a single user by their ID
 getSingleUser(req, res) {
-    User.findOne({ _id: req.params.userID })
+    User.findOne({ _id: req.params.userId })
+        .select('-_v')
         .then((user) =>
-          !user
+        !user
             ? res.status(404).json({ message: 'No user with that ID'})
             : res.json(user)
         )
@@ -48,7 +49,7 @@ updateUser(req, res) {
 //delete one user
 deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
-        then((user) =>
+        .then((user) =>
         !user
             ? res.status(404).json({ message: 'No user with that ID' })
             : res.json(user)

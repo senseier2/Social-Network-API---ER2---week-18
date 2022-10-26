@@ -58,10 +58,14 @@ updateThought(req, res) {
 //delete a thought by its id, remove the thought from its user document.
 deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId})
-        then((thought) =>
+        .then((thought) =>
         !thought    
             ? res.status(404).json({ message: 'No thought with that ID '})
-            : User.deleteMany({ _id: { $in: thought.user }})
+            : User.findOneAndUpdate(
+                { username: req.params.username },
+                {$pull: {thoughtText: params.id}},
+                {new: true }
+            )
         )
         .then(() => res.json({ message: 'Thought has been deleted.'}))
         .catch((err) => {
@@ -74,7 +78,7 @@ deleteThought(req, res) {
 createReaction(req, res) {
     Thought.findOneAndUpdate(
         { _id: params.thoughtId },
-        { $push: { reactions: req.body } },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
     )
     .then((thought) => {
