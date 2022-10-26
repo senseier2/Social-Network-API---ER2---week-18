@@ -78,9 +78,9 @@ addFriend(req, res) {
 // Remove friend via DELETE route from the users friend list
 deleteFriend(req, res) {
     User.findOneAndUpdate(
-        { _id: params.userId },
-        { $pull: { friends: params.friendId }},
-        {runValidators: true, new: true }
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId }},
+        { runValidators: true, new: true }
     )
     .then((user) => {
     !user
