@@ -19,7 +19,8 @@
 Here is a link to my Github repository:
 https://github.com/senseier2/Social-Network-API-ER2
 
-
+Here is a video link: 
+https://drive.google.com/file/d/15exJTen_xU7E211Z_JCkJsWAhhm0X2Ld/view
 
 ## Installation
     Download the repository, install your dependencies by typing "npm i" and start the API by typing "npm start" in your terminal.   You can use Postman to test the routes.
