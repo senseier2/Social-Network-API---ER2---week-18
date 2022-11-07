@@ -90,6 +90,6 @@ module.exports = (
         periodOdDay = 'am';
     }
 
-    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth} ${year} at ${hour}:${minutes} ${periodOdDay}`;
+    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth} ${year} at ${hour}:${minutes} ${periodOfDay}`;
     return formattedTimeStamp;
 };

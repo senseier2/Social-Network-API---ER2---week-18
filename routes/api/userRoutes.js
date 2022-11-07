@@ -1,7 +1,4 @@
 const router = require('express').Router();
-
-
-//Get all Users
 const {
 getUsers,
 getSingleUser,

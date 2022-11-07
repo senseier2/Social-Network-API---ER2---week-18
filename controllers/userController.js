@@ -61,10 +61,10 @@ deleteUser(req, res) {
 },
 
 // Add user friend via POST route
-addFriend(req, res) {
+addFriend({ params, body }, res) {
     User.findOneAndUpdate(
-        { _id: req.params.userId},
-        { $addToSet: { friends: req.params.friendId } },
+        { _id: req.params.userId },
+        { $push: { friends: req.params.friendId } },
         { runValidators: true, new: true }
     )
     .then((user) =>
