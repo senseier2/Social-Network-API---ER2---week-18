@@ -63,8 +63,8 @@ deleteUser(req, res) {
 // Add user friend via POST route
 addFriend({ params, body }, res) {
     User.findOneAndUpdate(
-        { _id: req.params.userId },
-        { $push: { friends: req.params.friendId } },
+        { _id: params.userId },
+        { $push: { friends: params.friendId } },
         { runValidators: true, new: true }
     )
     .then((user) =>

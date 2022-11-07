@@ -14,8 +14,12 @@
 * [Test](#test)
 * [Questions](#questions)
 
-## Description
-    The Social Media API is an back-end API for a social media platform allowing for user interaction based on posting thoughts, and reactions.  This model can be used for multiple types of social experiences.
+![Social Media API](assets/Social%20Media%20API%20code.JPG)
+
+Here is a link to my Github repository:
+https://github.com/senseier2/Social-Network-API-ER2
+
+
 
 ## Installation
     Download the repository, install your dependencies by typing "npm i" and start the API by typing "npm start" in your terminal.   You can use Postman to test the routes.
